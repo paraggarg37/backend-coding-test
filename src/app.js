@@ -69,6 +69,20 @@ module.exports = (db) => {
      *                  startLong:
      *                      type: number
      *                      description: Starting Lng Coordinate
+     *                  endLat:
+     *                      type: number
+     *                      description: End Lat Coordinate
+     *                  endLong:
+     *                      type: number
+     *                      description: End Lng Coordinate
+     *                  riderName:
+     *                      type: string
+     *                  driverName:
+     *                      type: string
+     *                  driverVehicle:
+     *                      type: string
+     *
+     *
      *       404:
      *          description: Ride add failed
      *          schema:
@@ -171,6 +185,18 @@ module.exports = (db) => {
      *                  startLong:
      *                      type: number
      *                      description: Starting Lng Coordinate
+     *                  endLat:
+     *                      type: number
+     *                      description: End Lat Coordinate
+     *                  endLong:
+     *                      type: number
+     *                      description: End Lng Coordinate
+     *                  riderName:
+     *                      type: string
+     *                  driverName:
+     *                      type: string
+     *                  driverVehicle:
+     *                      type: string
      *       404:
      *          description: Rides not found
      *          schema:
@@ -232,6 +258,18 @@ module.exports = (db) => {
      *                  startLong:
      *                      type: number
      *                      description: Starting Lng Coordinate
+     *                  endLat:
+     *                      type: number
+     *                      description: End Lat Coordinate
+     *                  endLong:
+     *                      type: number
+     *                      description: End Lng Coordinate
+     *                  riderName:
+     *                      type: string
+     *                  driverName:
+     *                      type: string
+     *                  driverVehicle:
+     *                      type: string
      *       404:
      *          description: Rides not found
      *          schema:
