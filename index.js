@@ -51,7 +51,7 @@ db.serialize(() => {
 
     const app = require('./src/app')(db);
 
-    app.listen(port, () => logger.log(`App started and listening on port ${port}`));
+    app.listen(port, () => logger.info(`App started and listening on port ${port}`));
 
     app.get('/swagger.json', (req, res) => {
         res.setHeader('Content-Type', 'application/json');
