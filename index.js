@@ -4,6 +4,22 @@ const express = require('express');
 const app = express();
 const port = 8010;
 
+
+const winston = require("winston");
+const logger = winston.createLogger({
+    level: 'info',
+    transports: [
+        new winston.transports.File({ filename: 'error.log', level: 'error' }),
+        new winston.transports.File({ filename: 'combined.log' })
+    ]
+});
+
+if (process.env.NODE_ENV !== 'production') {
+    logger.add(new winston.transports.Console({
+        format: winston.format.simple()
+    }));
+}
+
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
@@ -35,7 +51,7 @@ db.serialize(() => {
 
     const app = require('./src/app')(db);
 
-    app.listen(port, () => console.log(`App started and listening on port ${port}`));
+    app.listen(port, () => logger.log(`App started and listening on port ${port}`));
 
     app.get('/swagger.json', (req, res) => {
         res.setHeader('Content-Type', 'application/json');

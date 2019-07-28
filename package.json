@@ -7,8 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha tests",
-    "start": "node index.js"
+    "test": "npx nyc mocha tests",
+    "start": "node index.js",
+    "linter": "./node_modules/.bin/eslint --fix ./src"
   },
   "keywords": [
     "Xendit"
@@ -22,7 +23,14 @@
     "swagger-jsdoc": "^3.3.0"
   },
   "devDependencies": {
+    "eslint": "^6.1.0",
     "mocha": "^6.1.4",
-    "supertest": "^4.0.2"
+    "nyc": "^14.1.1",
+    "pre-push": "^0.1.1",
+    "supertest": "^4.0.2",
+    "winston": "^3.2.1"
+  },
+  "pre-push": {
+    "run": "test"
   }
 }
