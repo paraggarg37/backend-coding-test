@@ -39,7 +39,8 @@ module.exports = (db) => {
          */
         getRide(id) {
             return new Promise((resolve, reject) => {
-                db.all(`SELECT * FROM Rides WHERE rideID='${id}'`, function (err, rows) {
+                let stmt = db.prepare("SELECT * FROM Rides WHERE rideID=?");
+                stmt.all([id], function (err, rows) {
                     if (err) {
                         return reject(err);
                     }
