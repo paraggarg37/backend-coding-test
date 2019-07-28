@@ -53,4 +53,26 @@ describe('API tests', () => {
                 })
         });
     });
+
+    describe('GET /rides/:id', () => {
+        it('should not be vulnerable to sql injection', (done) => {
+            request(app)
+                .get("/rides/1';DROP TABLE Rides;--")
+                .expect('Content-Type', /json/)
+                .expect(200)
+                .then(() => {
+
+                    // Check table existence
+                    db.all("SELECT name FROM sqlite_master WHERE type='table' AND name='Rides';", (err, rows) => {
+                        if(err) {
+                            return Promise.reject(err);
+                        }
+
+                        assert(rows.length > 0);
+                        assert.strictEqual(rows[0].name, "Rides");
+                        done();
+                    })
+                })
+        });
+    });
 });
